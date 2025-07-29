@@ -150,6 +150,13 @@ document.addEventListener('DOMContentLoaded', function() {
       color: #222;
     }
     
+    #CalculatorContainer .result h4 {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #ad2a24;
+      margin: 15px 0;
+    }
+    
     #CalculatorContainer .calendar-btn {
       background-color: #ad2a24;
       color: #fff;
@@ -347,9 +354,6 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="calculator-container">
       <div class="date-selection">
         <div class="dropdown-fields">
-          <button class="calendar-btn" id="calendarBtn">
-            <span>📅</span> Pick Date
-          </button>
           <select id="month">
             <option value="0">January</option>
             <option value="1">February</option>
@@ -366,6 +370,9 @@ document.addEventListener('DOMContentLoaded', function() {
           </select>
           <select id="day"></select>
           <select id="year"></select>
+          <button class="calendar-btn" id="calendarBtn">
+            <span>📅</span> Pick Date
+          </button>
         </div>
       </div>
       
@@ -414,7 +421,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <h3>Calculation Result</h3>
         <p id="startDate"></p>
         <p id="operation"></p>
-        <p id="resultDate"></p>
+        <h4 id="resultDate"></h4>
       </div>
     </div>
 
@@ -588,8 +595,8 @@ document.addEventListener('DOMContentLoaded', function() {
       resultDate.setDate(resultDate.getDate() + (weeks * 7) + days);
     }
     
-    // Format dates for display
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    // Format dates for display with weekday
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const formattedStartDate = startDate.toLocaleDateString('en-US', options);
     const formattedResultDate = resultDate.toLocaleDateString('en-US', options);
     
